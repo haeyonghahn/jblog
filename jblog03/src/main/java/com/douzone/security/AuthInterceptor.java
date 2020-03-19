@@ -53,7 +53,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		String url = request.getRequestURI();
-		if(url.contains(authUser.getId())) {
+		String[] urlSplit = url.split("/");
+		
+		if(urlSplit[2].equals((authUser.getId()))) {
 			return true;
 		}
 		else {

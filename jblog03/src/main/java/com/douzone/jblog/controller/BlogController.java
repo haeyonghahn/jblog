@@ -43,7 +43,7 @@ public class BlogController {
 		BlogVo blogVo = blogService.getBlog(id);
 
 		if (blogVo == null) {
-			return "/WEB-INF/views/error/404.jsp";
+			return "error/404";
 		}
 
 		if (pathNo2.isPresent()) {
