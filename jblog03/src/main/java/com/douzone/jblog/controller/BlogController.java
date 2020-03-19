@@ -42,6 +42,9 @@ public class BlogController {
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
+		System.out.println(categoryNo);
+		System.out.println(postNo);
+		
 		if(pathNo2.isPresent()) {
 			postNo = pathNo2.get();
 			categoryNo = pathNo1.get();
