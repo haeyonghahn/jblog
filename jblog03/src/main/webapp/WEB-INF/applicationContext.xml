@@ -30,10 +30,15 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
    		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+	
+	<!-- auto proxy -->
+	<aop:aspectj-autoproxy>
+	
+	</aop:aspectj-autoproxy>
 
    <context:annotation-config />
 
-   <context:component-scan base-package="com.douzone.jblog.service, com.douzone.jblog.repository">
+   <context:component-scan base-package="com.douzone.jblog.service, com.douzone.jblog.repository, com.douzone.jblog.aspect">
       <context:include-filter type="annotation"
          expression="org.springframework.stereotype.Repository" />
       <context:include-filter type="annotation"
