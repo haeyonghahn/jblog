@@ -43,7 +43,10 @@
 	<!-- <mvc:interceptor> <mvc:mapping path="/board/**"/> <bean class="com.douzone.mysite.interceptor.MyInterceptor02"></bean> 
 		</mvc:interceptor> -->
 
-
+	<!-- auto proxy -->
+	<aop:aspectj-autoproxy>
+	
+	</aop:aspectj-autoproxy>
 
 	<context:annotation-config />
 	<context:component-scan
@@ -75,4 +78,14 @@
 		mapping="/assets/image/**">
 
 	</mvc:resources>
+	
+	<!-- MessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages/messages_ko</value>
+			</list>
+		</property>
+	</bean>
 </beans>
