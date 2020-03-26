@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="category">
+	<select id="postCount" parameterType="string" resultType="categoryvo">
+	<![CDATA[
+	select category.no as no, name, description, category.reg_date as regDate, id, ifnull(count(title), 0) as postCount 
+	from category left join post 
+	on (category.no = post.category_no)
+	where id = #{id }
+	group by name
+	]]>
+	</select>
+
+	<insert id="insert" parameterType="map">
+	<![CDATA[
+	insert into category values (null, #{name }, #{description }, now(), #{id })
+	]]>
+	</insert>
+	
+	<delete id="delete" parameterType="long">
+	<![CDATA[
+	delete from category where no = #{no }
+	]]>
+	</delete>
+	
+	<select id="findNoByName" parameterType="map" resultType="string">
+	<![CDATA[
+	select no from category where name = #{name } and id = #{id }
+	]]>
+	</select>
+	
+	<select id="findPostCount" parameterType="string" resultType="string">
+	<![CDATA[
+	select ifnull(count(title), 0) as postCount 
+	from category left join post 
+	on (category.no = post.category_no)
+	where category.no = #{no }
+	]]>
+	</select>
+	
+	<select id="findCategoryCount" parameterType="string" resultType="string">
+	<![CDATA[
+	select count(no) from category where id = #{id };
+	]]>
+	</select>
+	
+	<select id="getCategoryNo" parameterType="string" resultType="long">
+	<![CDATA[
+	select no from category where id = #{id } limit 1
+	]]>
+	</select>
+</mapper>
