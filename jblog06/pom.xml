@@ -9,6 +9,7 @@
 	</parent>
 	
 	<artifactId>jblog06</artifactId>
+	<packaging>war</packaging>
 	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
