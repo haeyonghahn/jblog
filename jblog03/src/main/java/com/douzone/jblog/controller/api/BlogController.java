@@ -50,4 +50,6 @@ public class BlogController {
 	public JsonResult delete(@PathVariable("id") String id) {
 		return JsonResult.success(null);
 	}
+	
+	
 }
