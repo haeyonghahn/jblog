@@ -9,6 +9,7 @@
 	on (category.no = post.category_no)
 	where id = #{id }
 	group by name
+	order by no asc;
 	]]>
 	</select>
 

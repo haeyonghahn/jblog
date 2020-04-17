@@ -168,4 +168,17 @@ public class BlogController {
 
 		return "redirect:/{id}";
 	}
+	
+	@Auth
+	@RequestMapping("admin/category/spa")
+	public String indexSpa(@PathVariable String id, Model model) {
+
+		BlogVo blogVo = blogService.getBlog(id);
+		List<CategoryVo> categoryVo = categoryService.postCount(id);
+
+		model.addAttribute("blogVo", blogVo);
+		model.addAttribute("categoryVo", categoryVo);
+
+		return "blog/blog-admin-category-spa";
+	}
 }
