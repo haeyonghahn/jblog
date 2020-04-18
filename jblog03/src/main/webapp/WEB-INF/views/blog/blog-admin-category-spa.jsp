@@ -35,7 +35,6 @@ $(function() {
 		dataType: 'json',
 		data: '',
 		success: function(response) {
-			console.log(response.data);
 			
 			if(response.result != "success") {
 				console.error(response.message);
@@ -74,7 +73,6 @@ $(function() {
 				contentType : 'application/json',
 				data: JSON.stringify(vo),
 				success: function(response) {
-					console.log(response);
 					if(response.result != "success") {
 						console.error(response.message);
 						return;
@@ -96,13 +94,33 @@ $(function() {
 		});
 	});
 	
+	// Live event : 존재하지 않는 element의 이벤트 핸들러를 미리 세팅해 놓는 것
 	// 카테고리 삭제
-	$("a").click(function() {
+	$(document).on("click", ".admin-cat td a", function(event) {
+		event.preventDefault();
+		
+		var no = $(this).data('no')
+		
 		$(function() {
 			$.ajax({
-				url: "",
+				url: "${pageContext.request.contextPath }/${authUser.id }/api/category/delete/" + no,
+				aync: true,
+				type: 'delete',
+				dataType: 'json',
+				contentType : 'application/json',
+				data: '',
+				success: function(response) {
+					console.log(response.data);
+					
+					if(response.data != -1) {
+						$(".admin-cat tr[data-no=" + response.data + "]").remove();
+					} 
+				},
+				error : function(xhr, status, e) {
+					console.error(status + ":" + e);
+				}
 			});
-		});		
+		});	
 	});
 });
 </script>
