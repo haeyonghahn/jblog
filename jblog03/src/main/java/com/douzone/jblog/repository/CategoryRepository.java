@@ -16,7 +16,7 @@ public class CategoryRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public boolean insert(Map<String, String> map) {
+	public boolean insert(Map<String, Object> map) {
 		return sqlSession.insert("category.insert", map) == 1;
 	}
 

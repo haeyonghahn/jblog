@@ -46,8 +46,7 @@ $(function() {
 			//	render(vo);
 			// });
 			response.data.pageContext = "${pageContext.request.contextPath }";
-			
-			
+					
 			var html = listTemplate.render(response);
 			$(".admin-cat").append(html);
 		},
@@ -98,29 +97,25 @@ $(function() {
 	// 카테고리 삭제
 	$(document).on("click", ".admin-cat td a", function(event) {
 		event.preventDefault();
-		
-		var no = $(this).data('no')
-		
+		var no = $(this).data('no');
 		$(function() {
 			$.ajax({
 				url: "${pageContext.request.contextPath }/${authUser.id }/api/category/delete/" + no,
 				aync: true,
-				type: 'delete',
+				type: 'Delete',
 				dataType: 'json',
 				contentType : 'application/json',
 				data: '',
 				success: function(response) {
-					console.log(response.data);
 					
-					if(response.data != -1) {
-						$(".admin-cat tr[data-no=" + response.data + "]").remove();
-					} 
+					$(".admin-cat tr[data-no=" + response.data + "]").remove();
+					 
 				},
 				error : function(xhr, status, e) {
 					console.error(status + ":" + e);
 				}
 			});
-		});	
+		});
 	});
 });
 </script>

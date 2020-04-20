@@ -34,17 +34,15 @@ public class BlogController {
 	public JsonResult add(@PathVariable("id") String id
 			, @RequestBody CategoryVo vo) {
 		
-		Map<String, String> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
+		map.put("no", vo.getNo());
 		map.put("id", id);
 		map.put("name", vo.getName());
 		map.put("description", vo.getDescription());
 
 		categoryService.insert(map);
-		vo.setId(id);
 		
-		System.out.println(vo);
-		
-		return JsonResult.success(vo);
+		return JsonResult.success(map);
 	}
 	
 	@DeleteMapping("/api/category/delete/{no}")

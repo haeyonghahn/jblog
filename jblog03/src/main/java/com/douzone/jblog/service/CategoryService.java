@@ -19,7 +19,7 @@ public class CategoryService {
 		return categoryRepository.postCount(id);
 	}
 	
-	public boolean insert(Map<String, String> map) {
+	public boolean insert(Map<String, Object> map) {
 		return categoryRepository.insert(map);
 	}
 

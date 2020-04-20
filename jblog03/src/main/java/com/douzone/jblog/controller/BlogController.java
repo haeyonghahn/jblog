@@ -122,7 +122,7 @@ public class BlogController {
 	public String category(@PathVariable String id, @RequestParam("name") String name,
 			@RequestParam("desc") String description, Model model) {
 
-		Map<String, String> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 
 		map.put("id", id);
 		map.put("name", name);
