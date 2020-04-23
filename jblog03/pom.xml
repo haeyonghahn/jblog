@@ -202,7 +202,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<url>http://192.168.1.104:8080/manager/text</url>
+					<url>http://192.168.1.223:8080/manager/text</url>
 					<path>/jblog03</path>
 					<username>admin</username>
 					<password>admin</password>
